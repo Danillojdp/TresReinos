@@ -1,4 +1,5 @@
-import java.util.Calendar;
+import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Principal {
 
@@ -6,26 +7,40 @@ public class Principal {
 		// TODO Auto-generated method stub
 
 			//Criando a data
-		Calendar dataNascA1 = Calendar.getInstance();
-		dataNascA1.set(Calendar.YEAR, 1974);
-		dataNascA1.set(Calendar.MONTH, Calendar.APRIL);
-		dataNascA1.set(Calendar.DAY_OF_MONTH, 12);
-		
+		LocalDate dataNascA1 = LocalDate.of(1974, 4, 12);
 		
 	
-	
-		
+		//LocalDate.of(1974, 4, 12));
 //-------------------------------------------------------------------------------------------------------------		
-
 			//Instanciando os objetos
 		
-		Aluno a1 = new Aluno("Jorge Danillo", "21603818", "Masculino", dataNascA1);
 		Disciplina d1 = new Disciplina("LTP1", "Ciência da Computação", 40);
 		Professor p1 = new Professor("Marcos Vinicius", "258654", "Mestrado", "02536921475");
 		Turma t1 = new Turma("Turma A", "Marcos Vinicius", "Programação");
 	
+//-------------------------------------------------------------------------------------------------------------			
+			//Instanciando objetos da classe aluno
 		
-//-------------------------------------------------------------------------------------------------------------	
+				Aluno a1 = new Aluno("Jorge", "25114", "Masculino", LocalDate.of(1974, 4, 12));
+				Aluno a2 = new Aluno("Maria", "2655", "Feminino", LocalDate.of(1974, 4, 12));
+				Aluno a3 = new Aluno("Jose", "2658", "Masculino", LocalDate.of(1974, 4, 12));
+				Aluno a4 = new Aluno("Tamara", "2653", "Feminino", LocalDate.of(1974, 4, 12));
+				Aluno a5 = new Aluno("Samara", "2651", "Feminino", LocalDate.of(1974, 4, 12));
+				Aluno a6 = new Aluno("Damara", "2656", "Feminino", LocalDate.of(1974, 4, 12));
+				
+//-------------------------------------------------------------------------------------------------------------		
+			// Adicionar alunos na turma
+				
+		t1.adicionarAluno(a1);
+		t1.adicionarAluno(a2);
+		t1.adicionarAluno(a3);
+		t1.adicionarAluno(a4);
+		t1.adicionarAluno(a5);
+		t1.adicionarAluno(a6);
+	
+		System.out.println(t1.listaAlunos());
+		
+	
 
 			//Imprimindo informações basicas
 		
@@ -35,6 +50,8 @@ public class Principal {
 		System.out.println(a1.getSexo());
 		System.out.println(a1.getClass());
 		System.out.println(a1.getDataNascimento());
+		
+		
 			
 			//Disciplina
 		System.out.println(d1.getNome());
@@ -52,8 +69,14 @@ public class Principal {
 		System.out.println(t1.getProfessor());
 		System.out.println(t1.getDisciplina());
 		
+			//Imprimindo o nome do aluno que esta no ArryList da turma 
+		System.out.println(t1.getAlunos().get(0).getNome());
+	
 		
 		
+			//Determonar Mencao e aprovacao com base na nota
+		Calculadora c = new Calculadora();
+		String mencao = c.CalcularMencao(6.7);
+		System.out.println("Mencao: " + mencao + " e RESULTADO: " + c.CalcularResultado(mencao));
 	}
-
 }
